@@ -152,46 +152,6 @@
 
   <div class="preloader text-white fs-6 text-uppercase overflow-hidden"></div>
 
-  <div class="search-popup">
-    <div class="search-popup-container">
-
-      <form role="search" method="get" class="form-group" action="">
-        <input type="search" id="search-form" class="form-control border-0 border-bottom"
-          placeholder="Type and press enter" value="" name="s" />
-        <button type="submit" class="search-submit border-0 position-absolute bg-white"
-          style="top: 15px;right: 15px;"><svg class="search" width="24" height="24">
-            <use xlink:href="#search"></use>
-          </svg></button>
-      </form>
-
-      <h5 class="cat-list-title">Browse Categories</h5>
-
-      <ul class="cat-list">
-        <li class="cat-list-item">
-          <a href="#" title="Jackets">Jackets</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="T-shirts">T-shirts</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="Handbags">Handbags</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="Accessories">Accessories</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="Cosmetics">Cosmetics</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="Dresses">Dresses</a>
-        </li>
-        <li class="cat-list-item">
-          <a href="#" title="Jumpsuits">Jumpsuits</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
 
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
     <div class="offcanvas-header justify-content-center">
@@ -201,40 +161,21 @@
       <div class="order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          <span class="badge bg-primary rounded-pill">0</span>
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Growers cider</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Fresh grapes</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Heinz tomato ketchup</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
+        <ul class="list-group mb-3" id="cart-items">
+          <!-- JS will inject items + total row here -->
         </ul>
+        
+        <button id="clear-cart" class="w-100 btn btn-outline-danger btn-sm mb-2">
+          Clear Cart
+        </button>
 
         <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to Checkout</button>
       </div>
     </div>
   </div>
+
   <div id="navbar-placeholder"></div>
 
 
@@ -262,9 +203,11 @@
                 </a>
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Dark florish onepiece</a>
+                    <a href="index.html">King-Roll(1gx10)</a>
                   </h5>
-                  <a href="index.html" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a>
+                  <!-- <a href="index.html" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a> -->
+                  <a href="#" class="add-to-cart text-decoration-none" data-name="King-Roll(1gx10)" data-price="20.00" data-after="Add to cart"><span>$20.00</span></a>
+
                 </div>
               </div>
             </div>
@@ -282,9 +225,9 @@
                 </a>
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Baggy Shirt</a>
+                    <a href="index.html">Queen-Roll(0.5gx10)</a>
                   </h5>
-                  <a href="index.html" class="text-decoration-none" data-after="Add to cart"><span>$55.00</span></a>
+                  <a href="#" class="add-to-cart text-decoration-none" data-name="Queen-Roll(0.5gx10)" data-price="15.00" data-after="Add to cart"><span>$15.00</span></a>
                 </div>
               </div>
             </div>
@@ -302,9 +245,9 @@
                 </a>
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Cotton off-white shirt</a>
+                    <a href="#">Queen-Deal(0.5gx20)</a>
                   </h5>
-                  <a href="index.html" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
+                  <a href="#" class="add-to-cart text-decoration-none" data-name="Queen-Deal(0.5gx20)" data-price="20.00" data-after="Add to cart"><span>$20.00</span></a>
                 </div>
               </div>
             </div>
@@ -312,19 +255,19 @@
           <div class="swiper-slide">
             <div class="product-item image-zoom-effect link-effect">
               <div class="image-holder">
-                <a href="index.html">
+                <a href="#">
                   <img src="images/product-item-6.jpg" alt="categories" class="product-image img-fluid">
                 </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
+                <a href="#" class="btn-icon btn-wishlist">
                   <svg width="24" height="24" viewBox="0 0 24 24">
                     <use xlink:href="#heart"></use>
                   </svg>
                 </a>
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Handmade crop sweater</a>
+                    <a href="#">Broke-King(1gx5)</a>
                   </h5>
-                  <a href="index.html" class="text-decoration-none" data-after="Add to cart"><span>$50.00</span></a>
+                  <a href="#" class="add-to-cart text-decoration-none" data-name="Broke-King(1gx5)" data-price="15.00" data-after="Add to cart"><span>$15.00</span></a>
                 </div>
               </div>
             </div>
@@ -552,6 +495,110 @@
     // shorthand: .load() does a GET and injects the response body
     $("#footer-placeholder").load("html_components/footerfooter.html");
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartList    = document.getElementById("cart-items");
+    const cartBadge   = document.querySelector("#offcanvasCart .badge");
+    const clearBtn    = document.getElementById("clear-cart");
+
+    // Load or init cart: { name: { price: number, count: number } }
+    let cart = JSON.parse(localStorage.getItem("myCart") || "{}");
+
+    function saveCart() {
+      localStorage.setItem("myCart", JSON.stringify(cart));
+    }
+
+    function computeTotals() {
+      let totalCount = 0, totalCost = 0;
+      for (let name in cart) {
+        totalCount += cart[name].count;
+        totalCost  += cart[name].count * cart[name].price;
+      }
+      return { totalCount, totalCost };
+    }
+
+    function updateCartUI() {
+      cartList.innerHTML = "";
+
+      // 1) render each item
+      for (let name in cart) {
+        const { price, count } = cart[name];
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+
+        li.innerHTML = `
+          <div>
+            <h6 class="my-0">
+              ${name}
+              <span class="badge bg-secondary rounded-pill ms-2">${count}</span>
+            </h6>
+          </div>
+          <div>
+            <span class="text-body-secondary me-3">
+              $${(price * count).toFixed(2)}
+            </span>
+            <button class="btn btn-sm btn-outline-danger remove-one" data-name="${name}">
+              &times;
+            </button>
+          </div>
+        `;
+        cartList.appendChild(li);
+      }
+
+      // 2) total row
+      const { totalCount, totalCost } = computeTotals();
+      cartBadge.textContent = totalCount;
+
+      const totalLi = document.createElement("li");
+      totalLi.className = "list-group-item d-flex justify-content-between";
+      totalLi.innerHTML = `
+        <span>Total (USD)</span>
+        <strong>$${totalCost.toFixed(2)}</strong>
+      `;
+      cartList.appendChild(totalLi);
+
+      // hook up remove-one buttons
+      cartList.querySelectorAll(".remove-one").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.dataset.name;
+          cart[name].count--;
+          if (cart[name].count <= 0) delete cart[name];
+          saveCart();
+          updateCartUI();
+        });
+      });
+    }
+
+    // 3) wire up Add-to-Cart links/buttons
+    document.querySelectorAll(".add-to-cart").forEach(el => {
+      el.addEventListener("click", e => {
+        e.preventDefault();
+        const name  = el.dataset.name;
+        const price = parseFloat(el.dataset.price);
+
+        if (!cart[name]) {
+          cart[name] = { price, count: 0 };
+        }
+        cart[name].count++;
+        saveCart();
+        updateCartUI();
+      });
+    });
+
+    // 4) Clear Cart
+    clearBtn.addEventListener("click", () => {
+      if (confirm("Empty your cart?")) {
+        cart = {};
+        saveCart();
+        updateCartUI();
+      }
+    });
+
+    // Initial UI render
+    updateCartUI();
+  });
+  </script>
+
 </body>
 
 </html>
