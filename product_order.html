@@ -342,6 +342,7 @@
             </li>
           </ul>
 
+          <!-- E-Transfer Option -->
           <div class="mb-3">
             <div class="form-check">
               <input
@@ -355,13 +356,54 @@
                 E-Transfer
               </label>
             </div>
-            <p class="small text-muted mt-2">
-              Make your payment directly into our bank account. Please use your Order ID as the payment reference.
-              Your order will not be shipped until the funds have cleared in our account.
-            </p>
+
+            <!-- Details shown only when E-Transfer is selected -->
+            <div id="eTransferDetails" class="small text-muted mt-2">
+              <!-- Email row -->
+              <div class="d-flex align-items-center mb-1">
+                <strong class="me-2">Email:</strong>
+                <span id="et-email">rimajumder@myseneca.ca</span>
+                <button
+                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
+                  data-target="et-email"
+                >
+                  Copy
+                </button>
+              </div>
+
+              <!-- Question row -->
+              <div class="d-flex align-items-center mb-1">
+                <strong class="me-2">Question:</strong>
+                <span id="et-question">What do you like most?</span>
+                <button
+                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
+                  data-target="et-question"
+                >
+                  Copy
+                </button>
+              </div>
+
+              <!-- Answer row -->
+              <div class="d-flex align-items-center mb-3">
+                <strong class="me-2">Answer:</strong>
+                <span id="et-answer">Gunky</span>
+                <button
+                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
+                  data-target="et-answer"
+                >
+                  Copy
+                </button>
+              </div>
+
+              <p>
+                We will mail you as soon as we receive the e-transfer. Timing depends on your bank and service.<br>
+                Thank you!
+              </p>
+            </div>
           </div>
 
-          <div class="mb-3">
+          <!-- Cash on Delivery Option -->
+          <div class="mb-4">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -375,14 +417,13 @@
             </div>
           </div>
 
-
-
           <button class="btn btn-primary w-100 text-uppercase">
             Place Order
           </button>
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 
@@ -411,7 +452,7 @@
 
 
   <script src="js/shopping_cart.js"></script>
-
+  <script src="js/checkout_cart.js"></script>
 
 </body>
 
