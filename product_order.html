@@ -219,53 +219,172 @@
 
 
 
+<div class="container my-5">
+  <div class="text-center mb-4">
+    <h2>Product Order Form</h2>
+  </div>
 
-<section class="collection bg-light position-relative py-5">
-  <div class="container">
-    <div class="row">
-      <!-- You can change this heading if you like -->
-      <div class="title-xlarge text-uppercase txt-fx domino">Product Detail</div>
-      <div class="collection-item d-flex flex-wrap my-5">
-        <!-- LEFT: Image -->
-        <div class="col-md-6 column-container">
-          <div class="image-holder">
-            <img
-              id="p-image"
-              src=""     
-              alt=""     
-              class="product-image img-fluid"
+  <div class="row gx-5">
+    <!-- Left column: the form -->
+    <div class="col-lg-6">
+      <form>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label">
+              First Name <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="fname" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label">
+              Last Name <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="lname" required>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Company Name (Optional)</label>
+            <input type="text" class="form-control" name="cn">
+          </div>
+
+          <div class="col-6">
+            <label class="form-label">
+              Province <span class="required">*</span>
+            </label>
+            <select class="form-select" name="province" required>
+              <option value="">Choose…</option>
+              <option>Ontario</option>
+              <option>Quebec</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <label class="form-label">
+              Postcode / ZIP <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="zip" required>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">
+              Street Address <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              name="houseadd"
+              placeholder="House number and street name"
+              required
             >
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Apartment, suite, unit (optional)</label>
+            <input
+              type="text"
+              class="form-control"
+              name="apartment"
+              placeholder="Apartment, suite, unit etc."
+            >
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Town / City <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="city" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              State / County <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="state" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Phone <span class="required">*</span>
+            </label>
+            <input type="tel" class="form-control" name="phone" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              Email Address <span class="required">*</span>
+            </label>
+            <input type="email" class="form-control" name="email" required>
           </div>
         </div>
-        <!-- RIGHT: Text content -->
-        <div class="col-md-6 column-container bg-white">
-          <div class="collection-content p-5 m-0 m-md-5">
-            <!-- Title -->
-            <h3
-              id="p-title"
-              class="element-title text-uppercase"
-            ></h3>
-            <!-- Description -->
-            <p id="p-description"></p>
-            <!-- Price -->
-            <p>
-              <strong>Price: </strong>
-              <span id="p-price"></span>
+      </form>
+    </div>
+
+    <!-- Right column: order summary -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0 text-uppercase">Your Order</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled mb-4">
+            <li class="d-flex justify-content-between">
+              <span>Product Name × 2</span>
+              <strong>$88.00</strong>
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Subtotal</span>
+              <strong>$88.00</strong>
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Shipping</span>
+              <strong>Free shipping</strong>
+            </li>
+          </ul>
+
+          <div class="mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                id="paymentBank"
+                checked
+              >
+              <label class="form-check-label" for="paymentBank">
+                E-Transfer
+              </label>
+            </div>
+            <p class="small text-muted mt-2">
+              Make your payment directly into our bank account. Please use your Order ID as the payment reference.
+              Your order will not be shipped until the funds have cleared in our account.
             </p>
-            <!-- Add to Cart button (data-name / data-price will be set by your JS) -->
-            <button
-              class="btn btn-dark text-uppercase mt-3 add-to-cart"
-              data-name=""
-              data-price=""
-            >
-              Add to Cart
-            </button>
           </div>
+
+          <div class="mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                id="paymentCOD"
+              >
+              <label class="form-check-label" for="paymentCOD">
+                Cash on Delivery
+              </label>
+            </div>
+          </div>
+
+
+
+          <button class="btn btn-primary w-100 text-uppercase">
+            Place Order
+          </button>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 
   <div id="footer-placeholder"></div>

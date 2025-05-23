@@ -1,9 +1,12 @@
   document.addEventListener("DOMContentLoaded", () => {
-    const cartList    = document.getElementById("cart-items");
-    const cartBadge   = document.querySelector("#offcanvasCart .badge");
-    const clearBtn    = document.getElementById("clear-cart");
+    // TOAST SETUP
+    const toastEl = document.getElementById("cartToast");
+    const cartToast = new bootstrap.Toast(toastEl, { delay: 2000 });
 
-    // Load or init cart: { name: { price: number, count: number } }
+    // CART UI SETUP
+    const cartList = document.getElementById("cart-items");
+    const cartBadge = document.querySelector("#offcanvasCart .badge");
+    const clearBtn = document.getElementById("clear-cart");
     let cart = JSON.parse(localStorage.getItem("myCart") || "{}");
 
     function saveCart() {
@@ -11,10 +14,11 @@
     }
 
     function computeTotals() {
-      let totalCount = 0, totalCost = 0;
+      let totalCount = 0,
+        totalCost = 0;
       for (let name in cart) {
         totalCount += cart[name].count;
-        totalCost  += cart[name].count * cart[name].price;
+        totalCost += cart[name].count * cart[name].price;
       }
       return { totalCount, totalCost };
     }
@@ -26,8 +30,8 @@
       for (let name in cart) {
         const { price, count } = cart[name];
         const li = document.createElement("li");
-        li.className = "list-group-item d-flex justify-content-between align-items-center";
-
+        li.className =
+          "list-group-item d-flex justify-content-between align-items-center";
         li.innerHTML = `
           <div>
             <h6 class="my-0">
@@ -60,7 +64,7 @@
       cartList.appendChild(totalLi);
 
       // hook up remove-one buttons
-      cartList.querySelectorAll(".remove-one").forEach(btn => {
+      cartList.querySelectorAll(".remove-one").forEach((btn) => {
         btn.addEventListener("click", () => {
           const name = btn.dataset.name;
           cart[name].count--;
@@ -71,17 +75,21 @@
       });
     }
 
-    // 3) wire up Add-to-Cart links/buttons
-    document.querySelectorAll(".add-to-cart").forEach(el => {
-      el.addEventListener("click", e => {
+    // 3) Add-to-Cart listener (with toast)
+    document.querySelectorAll(".add-to-cart").forEach((el) => {
+      el.addEventListener("click", (e) => {
         e.preventDefault();
-        const name  = el.dataset.name;
+        const name = el.dataset.name;
         const price = parseFloat(el.dataset.price);
 
-        if (!cart[name]) {
-          cart[name] = { price, count: 0 };
-        }
+        if (!cart[name]) cart[name] = { price, count: 0 };
         cart[name].count++;
+
+        // SHOW THE TOAST
+        toastEl.querySelector(".toast-body").textContent =
+          `${name} added to cart!`;
+        cartToast.show();
+
         saveCart();
         updateCartUI();
       });
@@ -96,6 +104,6 @@
       }
     });
 
-    // Initial UI render
+    // INITIAL RENDER
     updateCartUI();
   });
