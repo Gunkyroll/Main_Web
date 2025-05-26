@@ -183,7 +183,7 @@
         >
           Clear Cart
         </button>
-        <button class="w-100 btn btn-primary btn-lg" type="submit">
+        <button class="w-100 btn btn-primary btn-lg" onclick="window.location.href='product_order.html'">
           Continue to Checkout
         </button>
       </div>
@@ -219,213 +219,105 @@
 
 
 
-<div class="container my-5">
-  <div class="text-center mb-4">
-    <h2>Product Order Form</h2>
-  </div>
-
-  <div class="row gx-5">
-    <!-- Left column: the form -->
-    <div class="col-lg-6">
-      <form>
-        <div class="row g-3">
-          <div class="col-sm-6">
-            <label class="form-label">
-              First Name <span class="required">*</span>
-            </label>
-            <input type="text" class="form-control" name="fname" required>
-          </div>
-
-          <div class="col-sm-6">
-            <label class="form-label">
-              Last Name <span class="required">*</span>
-            </label>
-            <input type="text" class="form-control" name="lname" required>
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">Company Name (Optional)</label>
-            <input type="text" class="form-control" name="cn">
-          </div>
-
-          <div class="col-6">
-            <label class="form-label">
-              Province <span class="required">*</span>
-            </label>
-            <select class="form-select" name="province" required>
-              <option value="">Choose…</option>
-              <option>Ontario</option>
-              <option>Quebec</option>
-            </select>
-          </div>
-
-          <div class="col-6">
-            <label class="form-label">
-              Postcode / ZIP <span class="required">*</span>
-            </label>
-            <input type="text" class="form-control" name="zip" required>
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">
-              Street Address <span class="required">*</span>
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              name="houseadd"
-              placeholder="House number and street name"
-              required
-            >
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">Apartment, suite, unit (optional)</label>
-            <input
-              type="text"
-              class="form-control"
-              name="apartment"
-              placeholder="Apartment, suite, unit etc."
-            >
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">
-              Town / City <span class="required">*</span>
-            </label>
-            <input type="text" class="form-control" name="city" required>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">
-              State / County <span class="required">*</span>
-            </label>
-            <input type="text" class="form-control" name="state" required>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">
-              Phone <span class="required">*</span>
-            </label>
-            <input type="tel" class="form-control" name="phone" required>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">
-              Email Address <span class="required">*</span>
-            </label>
-            <input type="email" class="form-control" name="email" required>
-          </div>
-        </div>
-      </form>
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <h2>Product Order Form</h2>
     </div>
 
-    <!-- Right column: order summary -->
-    <div class="col-lg-6">
-      <div class="card border-0 shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0 text-uppercase">Your Order</h5>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mb-4">
-            <li class="d-flex justify-content-between">
-              <span>Product Name × 2</span>
-              <strong>$88.00</strong>
-            </li>
-            <li class="d-flex justify-content-between">
-              <span>Subtotal</span>
-              <strong>$88.00</strong>
-            </li>
-            <li class="d-flex justify-content-between">
-              <span>Shipping</span>
-              <strong>Free shipping</strong>
-            </li>
-          </ul>
-
-          <!-- E-Transfer Option -->
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="payment"
-                id="paymentBank"
-                checked
-              >
-              <label class="form-check-label" for="paymentBank">
-                E-Transfer
-              </label>
+    <div class="row gx-5">
+      <!-- Left column: the form -->
+      <div class="col-lg-6">
+        <form id="order-form">
+          <div class="row g-3">
+            <!-- form fields as before -->
+            <div class="col-sm-6">
+              <label class="form-label">First Name <span class="required">*</span></label>
+              <input type="text" class="form-control" name="fname" required>
             </div>
-
-            <!-- Details shown only when E-Transfer is selected -->
-            <div id="eTransferDetails" class="small text-muted mt-2">
-              <!-- Email row -->
-              <div class="d-flex align-items-center mb-1">
-                <strong class="me-2">Email:</strong>
-                <span id="et-email">rimajumder@myseneca.ca</span>
-                <button
-                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
-                  data-target="et-email"
-                >
-                  Copy
-                </button>
-              </div>
-
-              <!-- Question row -->
-              <div class="d-flex align-items-center mb-1">
-                <strong class="me-2">Question:</strong>
-                <span id="et-question">What do you like most?</span>
-                <button
-                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
-                  data-target="et-question"
-                >
-                  Copy
-                </button>
-              </div>
-
-              <!-- Answer row -->
-              <div class="d-flex align-items-center mb-3">
-                <strong class="me-2">Answer:</strong>
-                <span id="et-answer">Gunky</span>
-                <button
-                  class="btn btn-outline-secondary btn-sm ms-auto copy-btn"
-                  data-target="et-answer"
-                >
-                  Copy
-                </button>
-              </div>
-
-              <p>
-                We will mail you as soon as we receive the e-transfer. Timing depends on your bank and service.<br>
-                Thank you!
-              </p>
+            <div class="col-sm-6">
+              <label class="form-label">Last Name <span class="required">*</span></label>
+              <input type="text" class="form-control" name="lname" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Company Name (Optional)</label>
+              <input type="text" class="form-control" name="cn">
+            </div>
+            <div class="col-6">
+              <label class="form-label">Province <span class="required">*</span></label>
+              <select class="form-select" name="province" required>
+                <option value="">Choose&hellip;</option>
+                <option>Ontario</option>
+                <option>Quebec</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">Postcode / ZIP <span class="required">*</span></label>
+              <input type="text" class="form-control" name="zip" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Street Address <span class="required">*</span></label>
+              <input type="text" class="form-control" name="houseadd" placeholder="House number and street name" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Apartment, suite, unit (optional)</label>
+              <input type="text" class="form-control" name="apartment" placeholder="Apartment, suite, unit etc.">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Town / City <span class="required">*</span></label>
+              <input type="text" class="form-control" name="city" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">State / County <span class="required">*</span></label>
+              <input type="text" class="form-control" name="state" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone <span class="required">*</span></label>
+              <input type="tel" class="form-control" name="phone" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" class="form-control" name="email" required>
             </div>
           </div>
+        </form>
+      </div>
 
-          <!-- Cash on Delivery Option -->
-          <div class="mb-4">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="payment"
-                id="paymentCOD"
-              >
-              <label class="form-check-label" for="paymentCOD">
-                Cash on Delivery
-              </label>
-            </div>
+      <!-- Right column: order summary -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0 text-uppercase">Your Order</h5>
           </div>
+          <div class="card-body">
+            <ul id="order-summary-list" class="list-unstyled mb-4"></ul>
 
-          <button class="btn btn-primary w-100 text-uppercase">
-            Place Order
-          </button>
+            <!-- Payment options -->
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" id="paymentBank" checked>
+                <label class="form-check-label" for="paymentBank">E-Transfer</label>
+              </div>
+              <div id="eTransferDetails" class="small text-muted mt-2">
+                <!-- details -->
+                <div class="d-flex align-items-center mb-1"><strong class="me-2">Email:</strong><span id="et-email">rimajumder@myseneca.ca</span><button class="btn btn-outline-secondary btn-sm ms-auto copy-btn" data-target="et-email">Copy</button></div>
+                <div class="d-flex align-items-center mb-1"><strong class="me-2">Question:</strong><span id="et-question">What do you like most?</span><button class="btn btn-outline-secondary btn-sm ms-auto copy-btn" data-target="et-question">Copy</button></div>
+                <div class="d-flex align-items-center mb-3"><strong class="me-2">Answer:</strong><span id="et-answer">Gunky</span><button class="btn btn-outline-secondary btn-sm ms-auto copy-btn" data-target="et-answer">Copy</button></div>
+                <p>We will mail you as soon as we receive the e-transfer. Timing depends on your bank and service.<br>Thank you!</p>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" id="paymentCOD">
+                <label class="form-check-label" for="paymentCOD">Cash on Delivery</label>
+              </div>
+            </div>
+
+            <button id="placeOrderBtn" class="btn btn-primary w-100 text-uppercase">Place Order</button>
+          </div>
         </div>
       </div>
     </div>
-    
   </div>
-</div>
 
 
   <div id="footer-placeholder"></div>
@@ -452,7 +344,17 @@
 
 
   <script src="js/shopping_cart.js"></script>
-  <script src="js/checkout_cart.js"></script>
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+    const SUPABASE_URL     = 'https://xtpxpoiwukeufdngxrow.supabase.co';
+    const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0cHhwb2l3dWtldWZkbmd4cm93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDc0NDAsImV4cCI6MjA2MzE4MzQ0MH0.0pkLuu73EkiDd6A4BvNZdz1nl0HZVqtDWp_NZRp4AoA';
+
+      window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    });
+  </script>
+  <script src="js/product_order.js"></script>
 
 </body>
 

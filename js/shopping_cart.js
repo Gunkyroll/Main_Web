@@ -54,7 +54,11 @@
       // 2) total row
       const { totalCount, totalCost } = computeTotals();
       cartBadge.textContent = totalCount;
-
+      // ✅ Update navbar cart counter
+      document.querySelectorAll(".cart-count").forEach(el => {
+        el.textContent = `(${totalCount})`;
+      });
+      
       const totalLi = document.createElement("li");
       totalLi.className = "list-group-item d-flex justify-content-between";
       totalLi.innerHTML = `
