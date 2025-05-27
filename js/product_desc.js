@@ -1,25 +1,25 @@
   // 1) Our product “database”
   const products = {
     "King-Roll(1gx10)": {
-      title:       "King-Roll (1g×10)",
+      title:       "King-Roll(1g×10)",
       imageUrl:    "images/product-item-4.jpg",
       description: "A premium 1-gram King-Roll pack, perfect for sharing with friends.",
       price:       20.00
     },
     "Queen-Deal(0.5gx20)": {
-      title:       "Queen-Deal (0.5g×20)",
+      title:       "Queen-Deal(0.5g×20)",
       imageUrl:    "images/product-item-5.jpg",
       description: "Twenty 0.5-gram Queen-Deal prerolls—luxury and value combined.",
       price:       20.00
     },
     "Queen-Roll(0.5gx10)": {
-      title:       "Queen-Roll (0.5g×10)",
+      title:       "Queen-Roll(0.5g×10)",
       imageUrl:    "images/product-item-3.jpg",
       description: "Ten 0.5-gram Queen-Rolls with a smooth, floral profile.",
       price:       15.00
     },
     "Broke-King(1gx5)": {
-      title:       "Broke-King (1g×5)",
+      title:       "Broke-King(1g×5)",
       imageUrl:    "images/product-item-6.jpg",
       description: "Five 1-gram Broke-King joints—premium quality at an entry price.",
       price:       15.00

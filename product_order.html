@@ -21,6 +21,23 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
     rel="stylesheet">
+
+  <style>
+    /* make toast a little wider on desktop, full-width on mobile */
+  .toast-container .toast {
+    max-width: 400px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* override Bootstrap’s instant show so it fades in smoothly */
+  .toast.showing,
+  .toast.show {
+    opacity: 1 !important;
+  }
+
+  </style>
 </head>
 
 <body class="homepage">
@@ -213,6 +230,18 @@
       </div>
     </div>
   </div>
+  <!-- Order Confirmation Toast -->
+  <div class="toast-container position-fixed top-50 start-50 translate-middle p-3" style="z-index: 1080;">
+    <div id="orderToast" class="toast align-items-center text-bg-primary border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          🎉 Your order has been placed! Thank you for shopping with us.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
 
 
   <div id="navbar-placeholder"></div>
@@ -332,7 +361,15 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="js/script.min.js"></script>
   <script src="js/product_desc.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+    const SUPABASE_URL     = 'https://xtpxpoiwukeufdngxrow.supabase.co';
+    const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0cHhwb2l3dWtldWZkbmd4cm93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDc0NDAsImV4cCI6MjA2MzE4MzQ0MH0.0pkLuu73EkiDd6A4BvNZdz1nl0HZVqtDWp_NZRp4AoA';
 
+      window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    });
+  </script>
   <script>
     // shorthand: .load() does a GET and injects the response body
     $("#navbar-placeholder").load("html_components/navbar.html");
@@ -345,15 +382,6 @@
 
   <script src="js/shopping_cart.js"></script>
   <!-- Supabase client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-    const SUPABASE_URL     = 'https://xtpxpoiwukeufdngxrow.supabase.co';
-    const SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0cHhwb2l3dWtldWZkbmd4cm93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDc0NDAsImV4cCI6MjA2MzE4MzQ0MH0.0pkLuu73EkiDd6A4BvNZdz1nl0HZVqtDWp_NZRp4AoA';
-
-      window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    });
-  </script>
   <script src="js/product_order.js"></script>
   <script src="js/checkout_cart.js"></script>
 

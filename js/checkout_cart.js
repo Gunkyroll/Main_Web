@@ -120,11 +120,4 @@
         });
       });
 
-      // (Optional) Place Order click clears cart
-      document.getElementById('placeOrderBtn')
-        .addEventListener('click', () => {
-          localStorage.removeItem('myCart');
-          alert('Order placed! Your cart is now empty.');
-          // redirect or update UI...
-        });
     });
