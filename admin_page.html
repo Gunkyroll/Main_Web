@@ -105,8 +105,9 @@
   let supabaseClient;
 
   const paymentOptions = ['Pending', 'Completed', 'Failed'];
-  const orderOptions = ['Pending', 'Processing', 'Completed'];
-  const deliveryOptions = ['Not Shipped', 'Shipped', 'Delivered'];
+  const orderOptions = ['recived', 'Processing', 'Completed'];
+  const deliveryOptions = ['Pending', 'Shipped', 'Delivered'];
+  const ageOption = ['unverified','verified']
 
   document.addEventListener('DOMContentLoaded', () => {
     const SUPABASE_URL = 'https://xtpxpoiwukeufdngxrow.supabase.co';
@@ -186,7 +187,7 @@
         <td>${createDropdown('payment_status', paymentOptions, r.payment_status, r.id)}</td>
         <td>${createDropdown('order_status', orderOptions, r.order_status, r.id)}</td>
         <td>${createDropdown('delivery_status', deliveryOptions, r.delivery_status, r.id)}</td>
-        <td><input type="text" class="form-control form-control-sm" data-id="${r.id}" data-col="age_status" value="${r.age_status}"></td>
+        <td>${createDropdown('age_status', ageOption, r.age_status, r.id)}</td>
         <td><button class="btn btn-sm btn-success btn-save" data-id="${r.id}">Save</button></td>
       </tr>
     `).join('');

@@ -67,6 +67,8 @@
       const password = document.getElementById('si-password').value;
       const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
       if (error) alert('Error: ' + error.message);
+      window.location.href = '/admin_page.html';
+
     });
 
     // Sign Out
