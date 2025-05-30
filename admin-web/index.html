@@ -177,68 +177,11 @@
                             <!-- Static rows removed -->
                         </tbody>
                         
-                        <tbody>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
 
                 <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
+                <!-- <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>Recent Customers</h2>
                     </div>
@@ -316,7 +259,7 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -337,58 +280,61 @@
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0cHhwb2l3dWtldWZkbmd4cm93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDc0NDAsImV4cCI6MjA2MzE4MzQ0MH0.0pkLuu73EkiDd6A4BvNZdz1nl0HZVqtDWp_NZRp4AoA';
     supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-      // 2a) Check session & admin role
-      const { data: { session } } = await supabaseClient.auth.getSession();
-      if (!session?.user?.app_metadata?.role === 'admin') {
-        // not admin → redirect to login
-        return window.location.href = '/login_signup.html';
-      }
+  // 1) Session check
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (session?.user?.app_metadata?.role !== 'admin') {
+    return window.location.href = '/login_signup.html';
+  }
 
-      // 2b) Query the 10 most recent orders
-      const { data: orders, error } = await supabaseClient
-        .from('orders')
-        .select('id, total, payment, items')
-        .order('created_at', { ascending: false })
-        .limit(10);
+const { data: orders, error } = await supabaseClient
+  .from('order_status')
+  .select(`
+    *,
+    orders:orders!order_status_order_id_fkey ( items, total )
+  `)
+  .order('created_at', { ascending: false })
+  .limit(10);
 
-      if (error) {
-        console.error('Failed to load orders:', error);
-        return;
-      }
+  if (error) {
+    console.error('Failed to load orders:', error);
+    return;
+  }
+
   const tbody = document.getElementById('recent-orders-body');
-  if (!orders.length) {
+  if (!orders || orders.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5">No orders yet</td></tr>';
     return;
   }
 
-  tbody.innerHTML = orders.map(o => {
-    const nameStr = o.items.map(i => i.name).join(', ');
-    const qtyStr  = o.items.map(i => i.count).join(', ');
+tbody.innerHTML = orders.map(o => {
+  const items = o.orders?.items ?? [];
+  // if the orders table has a precomputed total, use it; otherwise you can sum yourself
+  const total = o.orders?.total 
+    ?? items.reduce((sum, i) => sum + (i.total || 0), 0);
 
-    return `
-      <tr>
-        <td>${nameStr}</td>
-        <td>${qtyStr}</td>
-        <td>$${o.total.toFixed(2)}</td>
-        <td>${o.payment}</td>
+  const nameStr = items.map(i => i.name).join(', ');
+  const qtyStr  = items.map(i => i.count).join(', ');
 
-        <td><span class="status pending">Pending</span></td>
-      </tr>
-    `;
-  }).join('');
+  return `
+    <tr>
+      <td>${nameStr}</td>
+      <td>${qtyStr}</td>
+      <td>$${total.toFixed(2)}</td>
+      <td>${o.payment_status}</td>
+      <td><span class="status ${o.delivery_status}">${o.delivery_status}</span></td>
+    </tr>
+  `;
+}).join('');
+
+  // 3) Sign‑out
+  document.getElementById('btn-signout').addEventListener('click', async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) alert('Error: ' + error.message);
+    window.location.href = '/login_signup.html';
+  });
+});
+
      
-
-    // Sign Out
-    document.getElementById('btn-signout').addEventListener("click", async () => {
-      const { error } = await supabaseClient.auth.signOut();
-      if (error) alert('Error: ' + error.message);
-      window.location.href = '/login_signup.html';
-
-    });
-
-
-     
-     });
 </script>
     
 </body>
