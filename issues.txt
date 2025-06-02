@@ -1,0 +1,1 @@
+1)refreshing makes cart 0 in navbar even if in mamory cart exists.
