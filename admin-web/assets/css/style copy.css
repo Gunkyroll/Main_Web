@@ -259,18 +259,24 @@ body {
 }
 
 /* ================== Order Details List ============== */
-
 .details {
-  display: grid;
-  grid-template-columns: 1fr;  /* instead of 2fr 1fr */
-  grid-gap: 30px;
-  padding: 20px;
+  position: relative;
   width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
 }
 
 .details .recentOrders {
-  /* existing styles… */
-  grid-column: 1 / -1;
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
 }
 
 .details .cardHeader {
