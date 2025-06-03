@@ -2,7 +2,7 @@
   const products = {
     "King-Roll(1gx10)": {
       title:       "King-Roll(1g×10)",
-      imageUrl:    "images/product-item-4.jpg",
+      imageUrl:    "images/king-roll.JPG",
       description: "A premium 1-gram King-Roll pack, perfect for sharing with friends.",
       price:       20.00
     },
@@ -14,7 +14,7 @@
     },
     "Queen-Roll(0.5gx10)": {
       title:       "Queen-Roll(0.5g×10)",
-      imageUrl:    "images/product-item-3.jpg",
+      imageUrl:    "images/queen-half.JPG",
       description: "Ten 0.5-gram Queen-Rolls with a smooth, floral profile.",
       price:       15.00
     },
