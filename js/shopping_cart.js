@@ -7,6 +7,7 @@
     const cartList = document.getElementById("cart-items");
     const cartBadge = document.querySelector("#offcanvasCart .badge");
     const clearBtn = document.getElementById("clear-cart");
+    const navcartbadge = document.getElementById("nav-cart-count");
     let cart = JSON.parse(localStorage.getItem("myCart") || "{}");
 
     function saveCart() {

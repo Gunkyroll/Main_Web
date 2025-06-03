@@ -1,1 +1,3 @@
 1)refreshing makes cart 0 in navbar even if in mamory cart exists.
+    not resolved yet.
+2)NULL order creating issue.
